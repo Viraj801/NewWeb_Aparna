@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,8 +63,8 @@
     display:flex;align-items:center;
     padding:120px 5% 60px;
     background:
-      linear-gradient(115deg, rgba(16,58,36,.94) 0%, rgba(29,92,58,.82) 45%, rgba(29,92,58,.55) 100%),
-      repeating-linear-gradient(45deg, rgba(201,162,39,.06) 0 12px, transparent 12px 24px);
+      linear-gradient(115deg, rgba(16,58,36,.95) 0%, rgba(29,92,58,.86) 45%, rgba(29,92,58,.6) 100%),
+      url('images/facility-2.jpg') center/cover no-repeat;
     position:relative;overflow:hidden;
   }
   .hero::before,.hero::after{
@@ -154,15 +155,17 @@
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
   .about-visual{
     position:relative;border-radius:24px;overflow:hidden;
-    min-height:380px;
-    background:
-      linear-gradient(180deg, rgba(201,162,39,.15), rgba(29,92,58,.55)),
-      repeating-linear-gradient(0deg, #d8c678 0 6px, #cdba68 6px 12px);
+    min-height:400px;
     box-shadow:0 20px 50px rgba(16,58,36,.18);
-    display:flex;align-items:flex-end;justify-content:center;
   }
+  .about-visual img{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;transition:transform .8s ease;
+  }
+  .about-visual:hover img{transform:scale(1.05);}
   .about-visual .field-label{
-    margin:24px;background:rgba(16,58,36,.85);color:var(--gold-light);
+    position:absolute;left:20px;right:20px;bottom:20px;
+    background:rgba(16,58,36,.85);color:var(--gold-light);
     padding:12px 22px;border-radius:14px;font-weight:600;font-size:.9rem;
     backdrop-filter:blur(4px);
   }
@@ -354,6 +357,55 @@
     font-size:.78rem;color:#7e9879;
   }
 
+  /* ---------- FACILITY GALLERY ---------- */
+  .facility{background:linear-gradient(180deg,#fff,#f4f1e6);}
+  .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:230px;gap:16px;}
+  .gal-item{
+    position:relative;border-radius:18px;overflow:hidden;cursor:pointer;
+    box-shadow:0 10px 26px rgba(16,58,36,.12);
+    transition:transform .3s, box-shadow .3s;
+  }
+  .gal-item.wide{grid-column:span 2;}
+  .gal-item:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(16,58,36,.22);}
+  .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease;}
+  .gal-item:hover img{transform:scale(1.08);}
+  .gal-cap{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:30px 16px 12px;
+    background:linear-gradient(transparent, rgba(11,42,26,.88));
+    color:#fff;font-size:.84rem;font-weight:600;
+    opacity:0;transform:translateY(10px);transition:.35s;
+  }
+  .gal-item:hover .gal-cap{opacity:1;transform:none;}
+  .gal-zoom{
+    position:absolute;top:12px;right:12px;width:34px;height:34px;
+    border-radius:50%;background:rgba(201,162,39,.92);color:var(--green-dark);
+    display:flex;align-items:center;justify-content:center;font-size:1.05rem;
+    opacity:0;transition:.3s;
+  }
+  .gal-item:hover .gal-zoom{opacity:1;}
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{
+    position:fixed;inset:0;z-index:2000;
+    background:rgba(8,24,15,.94);
+    display:flex;align-items:center;justify-content:center;flex-direction:column;
+    padding:5vh 4vw;opacity:0;pointer-events:none;transition:opacity .3s;
+  }
+  .lightbox.open{opacity:1;pointer-events:auto;}
+  .lightbox img{
+    max-width:100%;max-height:82vh;object-fit:contain;
+    border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.65);
+    transform:scale(.96);transition:transform .3s;
+  }
+  .lightbox.open img{transform:scale(1);}
+  .lb-cap{color:var(--gold-light);margin-top:16px;font-size:.92rem;font-weight:600;letter-spacing:.3px;}
+  .lb-close{
+    position:absolute;top:18px;right:26px;background:none;border:none;
+    color:#fff;font-size:2.6rem;cursor:pointer;line-height:1;transition:.25s;
+  }
+  .lb-close:hover{color:var(--gold-light);transform:scale(1.12);}
+
   /* reveal animation */
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
   .reveal.visible{opacity:1;transform:none;}
@@ -364,6 +416,8 @@
     .hero p{margin:0 auto 34px;}
     .hero-btns{justify-content:center;}
     .prod-grid{grid-template-columns:repeat(2,1fr);}
+    .gal-grid{grid-template-columns:repeat(2,1fr);}
+    .gal-item.wide{grid-column:span 2;}
     .farm-steps{grid-template-columns:repeat(3,1fr);}
     .stats-grid{grid-template-columns:repeat(2,1fr);}
     .cert-grid{grid-template-columns:repeat(2,1fr);}
@@ -380,12 +434,15 @@
     .hamburger{display:block;}
     .nav-cta{display:none;}
     .prod-grid,.farm-steps,.cert-grid,.team-grid{grid-template-columns:1fr;}
+    .gal-grid{grid-template-columns:1fr;grid-auto-rows:220px;}
+    .gal-item.wide{grid-column:span 1;}
     .stats-grid{grid-template-columns:1fr 1fr;}
     .about-feats{grid-template-columns:1fr;}
     .foot-grid{grid-template-columns:1fr;}
     section{padding:64px 5%;}
   }
 </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -397,6 +454,7 @@
   </div>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
+    <li><a href="#facility">Facility</a></li>
     <li><a href="#products">Products</a></li>
     <li><a href="#farming">Project Farming</a></li>
     <li><a href="#process">Process</a></li>
@@ -470,8 +528,9 @@
       <p>Located at Bareli, Dist. Raisen (M.P.) — the core of Pusa Basmati rice agricultural land.</p>
     </div>
     <div class="about-grid">
-      <div class="about-visual reveal" style="background-image:url('pf.jpg');background-size:cover;background-position:center;"> >
-        <div class="field-label">🌾 Paddy fields of the Raisen region — where our journey begins</div>
+      <div class="about-visual reveal">
+        <img src="pf.jpg" alt="Aerial view of Aparna Foods facility, Bareli, Raisen" loading="lazy">
+        <div class="field-label">🚁 Aerial view of our Bareli facility — nestled in lush paddy farmland</div>
       </div>
       <div class="about-text reveal">
         <h3>Manufacturer &amp; Exporter of All Basmati Rice Variants</h3>
@@ -483,6 +542,54 @@
           <div class="feat"><div class="ico">📦</div><div><b>Private Labeling</b><small>Custom packaging, 5 kg – 50 kg</small></div></div>
           <div class="feat"><div class="ico">⚓</div><div><b>Port Access</b><small>ICD Mandideep / Mundra Port</small></div></div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FACILITY ============ -->
+<section class="facility" id="facility">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Infrastructure</span>
+      <h2>Inside Our World-Class Facility</h2>
+      <p>A fully automated milling complex set amid lush paddy farmland at Bareli — 200 MT/day capacity with 20,000 MT of storage across 4 warehouses. Click any photo to view.</p>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item wide reveal" onclick="openLightbox('P1.jpeg','Aerial view — the complete Bareli milling complex')">
+        <img src="P1.jpeg" alt="Aerial view of the Aparna Foods milling complex" loading="lazy">
+        <span class="gal-zoom">⤢</span>
+        <div class="gal-cap">Aerial View — Bareli Milling Complex</div>
+      </div>
+      <div class="gal-item reveal" onclick="openLightbox('P2.jpeg','Our facility nestled in paddy farmland')">
+        <img src="P2.jpeg" alt="Aerial view of facility surrounded by green fields" loading="lazy">
+        <span class="gal-zoom">⤢</span>
+        <div class="gal-cap">Surrounded by Paddy Fields</div>
+      </div>
+      <div class="gal-item reveal" onclick="openLightbox('P3.jpeg','Warehouse &amp; production units from above')">
+        <img src="P3.jpeg" alt="Warehouse units aerial view" loading="lazy">
+        <span class="gal-zoom">⤢</span>
+        <div class="gal-cap">Warehouse &amp; Production Units</div>
+      </div>
+      <div class="gal-item reveal" onclick="openLightbox('P4.jpeg','Full facility layout — drone view')">
+        <img src="P4.jpeg" alt="Drone view of complete facility layout" loading="lazy">
+        <span class="gal-zoom">⤢</span>
+        <div class="gal-cap">Complete Facility Layout</div>
+      </div>
+      <div class="gal-item reveal" onclick="openLightbox('P5.jpeg','Multi-level automated milling line')">
+        <img src="P5.jpeg" alt="Automated rice milling machinery inside the plant" loading="lazy">
+        <span class="gal-zoom">⤢</span>
+        <div class="gal-cap">Automated Milling Line</div>
+      </div>
+      <div class="gal-item reveal" onclick="openLightbox('P6.jpeg','Imported precision milling machinery')">
+        <img src="P6.jpeg" alt="Imported milling machines and destoners" loading="lazy">
+        <span class="gal-zoom">⤢</span>
+        <div class="gal-cap">Imported Precision Machinery</div>
+      </div>
+      <div class="gal-item wide reveal" onclick="openLightbox('P7.jpeg','Storage &amp; packing hall with rice stacks')">
+        <img src="P7.jpeg" alt="Storage and packing hall with covered rice stacks" loading="lazy">
+        <span class="gal-zoom">⤢</span>
+        <div class="gal-cap">Storage &amp; Packing Hall</div>
       </div>
     </div>
   </div>
@@ -710,6 +817,13 @@
   </div>
 </section>
 
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lb-close" aria-label="Close">×</button>
+  <img id="lightboxImg" src="" alt="Facility photo enlarged">
+  <div class="lb-cap" id="lightboxCap"></div>
+</div>
+
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="foot-grid">
@@ -724,6 +838,7 @@
       <h4>Quick Links</h4>
       <ul>
         <li><a href="#about">About Us</a></li>
+        <li><a href="#facility">Our Facility</a></li>
         <li><a href="#products">Products</a></li>
         <li><a href="#farming">Project Farming</a></li>
         <li><a href="#process">Our Process</a></li>
@@ -789,6 +904,20 @@
     btn.style.background = 'linear-gradient(135deg,#c9a227,#a07f14)';
     setTimeout(() => { btn.textContent = 'Send Enquiry →'; btn.style.background = ''; this.reset(); }, 2600);
   });
+
+  // Lightbox
+  function openLightbox(src, cap){
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightboxCap').textContent = cap || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
 </body>
 </html>
