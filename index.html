@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aparna Foods Pvt Ltd — Portfolio | Premium Basmati Rice Manufacturer & Exporter</title>
+<div class="mark">A</div>
 <meta name="description" content="Aparna Foods Pvt Ltd — Manufacturer & Exporter of premium Basmati Rice from Bareli, Madhya Pradesh, India. Raw, Steam, Sella & Brown Rice under the Mayur-Vel brand.">
 <style>
   :root{
@@ -211,6 +212,39 @@
   .prod-body p{color:var(--muted);font-size:.86rem;flex:1;}
   .prod-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px;}
   .tag{background:#f2edda;color:#7a6b2a;font-size:.68rem;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:.5px;text-transform:uppercase;}
+
+  /* ---------- MAYUR-VEL PRODUCT COLLECTION ---------- */
+  .products{background:linear-gradient(180deg,#fff 0%,#f5f2e9 100%);}
+  .products .sec-head{margin-bottom:42px;}
+  .products .mv-tagline{display:inline-block;margin-top:12px;padding:7px 14px;border-left:3px solid var(--gold);background:#f7f3e7;color:var(--green-dark);font-size:.86rem;font-weight:600;}
+  .products .prod-grid{gap:20px;align-items:stretch;}
+  .products .prod-card{
+    position:relative;min-width:0;padding:12px 12px 20px;
+    background:#fff;border:1px solid #e8e1ce;border-radius:12px;
+    box-shadow:0 8px 24px rgba(16,58,36,.08);
+    cursor:pointer;transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
+  }
+  .products .prod-card:hover{transform:translateY(-6px);border-color:#d9c47d;box-shadow:0 18px 36px rgba(16,58,36,.14);}
+  .products .prod-badge{
+    position:absolute;top:22px;right:22px;z-index:1;
+    padding:5px 11px;border-radius:20px;background:var(--green-dark);
+    color:#fff;font-size:.72rem;font-weight:700;box-shadow:0 3px 10px rgba(16,58,36,.16);
+  }
+  .products .mv-pack{
+    height:290px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+    border:1px solid #eee8d8;border-radius:8px;
+    background:radial-gradient(ellipse at 50% 42%,#fff 0%,#f7f4eb 72%,#eeeadc 100%);
+  }
+  .products .mv-pack img{width:100%;height:100%;object-fit:contain;transition:transform .4s ease;}
+  .products .prod-card:hover .mv-pack img{transform:scale(1.045);}
+  .products .prod-card h3{margin:18px 8px 0;color:var(--green-dark);font-size:1.3rem;line-height:1.2;}
+  .products .mv-sub{margin:4px 8px 0;color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;}
+  .products .prod-card p{flex:1;margin:12px 8px 16px;color:#62695e;font-size:.86rem;line-height:1.65;}
+  .products .mv-meta{display:flex;flex-wrap:wrap;gap:7px;margin:0 8px;}
+  .products .mv-meta span{padding:5px 9px;border:1px solid #e9e3d3;border-radius:4px;background:#f8f6ef;color:#50604d;font-size:.68rem;font-weight:600;}
+  .products .prod-foot{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;margin-top:36px;}
+  .products .prod-foot .btn-ghost{border-color:var(--green);color:var(--green-dark);}
+  .products .prod-foot .btn-ghost:hover{background:var(--green);color:#fff;}
 
   /* ---------- FARMING ---------- */
   .farming{
@@ -596,7 +630,7 @@
 </section>
 
 <!-- ============ PRODUCTS ============ -->
-<section class="products" id="products">
+<!-- <section class="products" id="products">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Our Range</span>
@@ -646,8 +680,82 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
+<!-- ============ MAYUR-VEL SIGNATURE RANGE ============ -->
 
+<section class="products" id="products">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Our Flagship Brand</span>
+      <h2>The Mayur-Vel Basmati Collection</h2>
+      <p>Four Signature Variants, One Standard of Excellence — long grain, aromatic Basmati from the Barna Valley.</p>
+      <p class="mv-tagline reveal">“Four Signature Variants, One Standard of Excellence”</p>
+    </div>
+    
+    <div class="prod-grid">
+      <div class="prod-card reveal" onclick="openLightbox('PREMIUM.png','Mayur-Vel Premium Basmati Rice — 30 kg')">
+        <span class="prod-badge">30 kg</span>
+        <div class="mv-pack"><img src="PREMIUM.png" alt="Mayur-Vel Premium Basmati Rice pack — black" loading="lazy"></div>
+        <h3>Premium</h3>
+        <div class="mv-sub">Basmati Rice</div>
+        <p>The crown of the range — extra-long grains, aged to perfection for feasts that must impress.</p>
+        <div class="mv-meta"><span>Long Grain</span><span>Aromatic</span></div>
+      </div>
+      <div class="prod-card reveal" onclick="openLightbox('GOLD.png','Mayur-Vel Gold Basmati Rice — 5 kg')">
+        <span class="prod-badge">5 kg</span>
+        <div class="mv-pack"><img src="GOLD.png" alt="Mayur-Vel Gold Basmati Rice pack — orange" loading="lazy"></div>
+        <h3>Gold</h3>
+        <div class="mv-sub">Basmati Rice</div>
+        <p>The golden standard for every celebration — rich aroma and flawless elongation on the plate.</p>
+        <div class="mv-meta"><span>Rich Aroma</span><span>Great Taste</span></div>
+      </div>
+      <div class="prod-card reveal" onclick="openLightbox('SUPER.png','Mayur-Vel Super Basmati Rice — 5 kg')">
+        <span class="prod-badge">5 kg</span>
+        <div class="mv-pack"><img src="SUPER.png" alt="Mayur-Vel Super Basmati Rice pack — brown" loading="lazy"></div>
+        <h3>Super</h3>
+        <div class="mv-sub">Basmati Rice</div>
+        <p>Everyday luxury — bold aroma and superb cooking length, consistent batch after batch.</p>
+        <div class="mv-meta"><span>Bold Aroma</span><span>Superior Quality</span></div>
+      </div>
+      <div class="prod-card reveal" onclick="openLightbox('Rozana.png','Mayur-Vel Rozana Basmati Rice — 5 kg')">
+        <span class="prod-badge">5 kg</span>
+        <div class="mv-pack"><img src="Rozana.png" alt="Mayur-Vel Rozana Basmati Rice pack — blue" loading="lazy"></div>
+        <h3>Rozana</h3>
+        <div class="mv-sub">Basmati Rice</div>
+        <p>Made for daily dining — great taste and dependable quality, roz (every day), khaas (special).</p>
+        <div class="mv-meta"><span>Everyday</span><span>Value Pack</span></div>
+      </div>
+      <div class="prod-card reveal" onclick="openLightbox('Mayur_vel_sella.png','Mayur-Vel Mayur Vel Sella Basmati Rice — 5 kg')">
+        <span class="prod-badge">25 kg</span>
+        <div class="mv-pack"><img src="Mayur_vel_sella.png" alt="Mayur-Vel Mayur Vel Sella Basmati Rice pack — blue" loading="lazy"></div>
+        <h3>Mayur Vel Sella</h3>
+        <div class="mv-sub">Basmati Rice</div>
+       <p>Ideal for biryani, pulao, and delicious meals for the whole family.</p>
+        <div class="mv-meta"><span>Everyday</span><span>Value Pack</span></div>
+      </div>
+      <div class="prod-card reveal" onclick="openLightbox('MV_steam.png','Mayur-Vel Mayur Vel steam Basmati Rice — 5 kg')">
+        <span class="prod-badge">25 kg</span>
+        <div class="mv-pack"><img src="MV_steam.png" alt="Mayur-Vel Mayur Vel steam Basmati Rice pack — blue" loading="lazy"></div>
+        <h3>Mayur Vel steam</h3>
+        <div class="mv-sub">Basmati Rice</div>
+        <p>Versatile Basmati rice for flavourful pulao and satisfying everyday meals.</p>
+        <div class="mv-meta"><span>Everyday</span><span>Value Pack</span></div>
+      </div>
+      <div class="prod-card reveal" onclick="openLightbox('GOLDP.png','Mayur-Vel Gold Basmati Rice — 5 kg')">
+        <span class="prod-badge">30 kg</span>
+        <div class="mv-pack"><img src="GOLDP.png" alt="Mayur-Vel Gold Basmati Rice pack — blue" loading="lazy"></div>
+        <h3>Gold</h3>
+        <div class="mv-sub">Basmati Rice</div>
+       <p>A great bulk-pack choice for restaurants, hotels, and catering businesses.</p>
+        <div class="mv-meta"><span>Everyday</span><span>Value Pack</span></div>
+      </div>
+    </div>
+    <div class="prod-foot reveal">
+      <a href="#contact" class="btn-primary">Enquire About Mayur-Vel</a>
+      <a href="#products" class="btn-ghost">See Milling Variants</a>
+    </div>
+  </div>
+</section>
 <!-- ============ FARMING ============ -->
 <section class="farming" id="farming">
   <div class="wrap">
